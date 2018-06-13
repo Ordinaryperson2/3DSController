@@ -200,51 +200,51 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 						joyX = 16383; //Halfway between the x
 						joyY = 16383; //Halfway between the y
 					}
-					
+
 					else if(settings.touch == joystick2) {
 						joyRX = 16383; //Halfway between the rx
 						joyRY = 16383; //Halfway between the ry
 					}
 				}
-				
+
 				if(settings.circlePad == mouse) {
 					if(abs(circlePad.x) < settings.mouseSpeed * 3) circlePad.x = 0;
 					if(abs(circlePad.y) < settings.mouseSpeed * 3) circlePad.y = 0;
-					
+
 					POINT p;
 					GetCursorPos(&p);
 					SetCursorPos(p.x + (circlePad.x * settings.mouseSpeed) / 32, p.y - (circlePad.y * settings.mouseSpeed) / 32);
 				}
 				else if(settings.circlePad == joystick1) {
-					joyX = (circlePad.x + 128) * 128;
-					joyY = (128 - circlePad.y) * 128;
+					joyX = clamp((circlePad.x + 128) * 128, 0, 32767);
+					joyY = clamp((128 - circlePad.y) * 128, 0, 32767);
 				}
-				
+
 				else if(settings.circlePad == joystick2) {
-					joyRX = (circlePad.x + 128) * 128;
-					joyRY = (128 - circlePad.y) * 128;
+					joyRX = clamp((circlePad.x + 128) * 128, 0, 32767);
+					joyRY = clamp((128 - circlePad.y) * 128, 0, 32767);
 				}
-				
+
 				if(settings.cStick == mouse) {
 					if(abs(cStick.x) < settings.mouseSpeed * 3) cStick.x = 0;
 					if(abs(cStick.y) < settings.mouseSpeed * 3) cStick.y = 0;
-					
+
 					POINT p;
 					GetCursorPos(&p);
 					SetCursorPos(p.x + (cStick.x * settings.mouseSpeed) / 32, p.y - (cStick.y * settings.mouseSpeed) / 32);
 				}
-				
+
 				else if(settings.cStick == joystick1) {
-					joyX = (cStick.x + 128) * 128;
-					joyY = (128 - cStick.y) * 128;
+					joyX = clamp((cStick.x + 128) * 128, 0, 32767);
+					joyY = clamp((128 - cStick.y) * 128, 0, 32767);
 				}
-				
+
 				else if(settings.cStick == joystick2) {
-					joyRX = (cStick.x + 128) * 128;
-					joyRY = (128 - cStick.y) * 128;
+					joyRX = clamp((cStick.x + 128) * 128, 0, 32767);
+					joyRY = clamp((128 - cStick.y) * 128, 0, 32767);
 				}
-				
-				
+
+
 				if(settings.dPad == cPov) {
 					if((currentKeys & KEY_DUP) && !(currentKeys & KEY_DLEFT)) {
 						if((currentKeys & KEY_DRIGHT)) {
