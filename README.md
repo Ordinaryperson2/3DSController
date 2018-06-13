@@ -2,12 +2,12 @@
 ===
 A 3DS homebrew application which allows you to use your 3DS as a wireless controller for Windows.
 
-### Download
-The latest release will always be downloadable from [here](https://github.com/CTurt/3DSController/releases/).
+## Download
+The latest release will always be downloadable from [here](https://github.com/Ordinaryperson2/3DSController/releases/).
 
 If you are updating to 0.6 from an older version, you will need to make sure you update vJoy to the recommended version.
 
-### Setup and Usage
+## Setup and Usage
 Firstly, if you want to be able to register the circle pad or touch screen as a joystick you will need to install [vJoy (version 2.0.5-120515 is preferable)](http://sourceforge.net/projects/vjoystick/files/Beta%202.x/2.0.5-120515/vJoy_205_050515.exe/download). However, if you just want to use keyboard buttons, this is not necessary.
 
 Extract the archive and copy the executable in the `3DS` directory with the extension that applies to your loader: `3DSController.3dsx` and `3DSController.smdh` for Ninjhax, `3DSController.3ds` for flashcards, or `3DSController.cia` for CFWs, into your 3DS's SD card or flashcard's micro SD card.
@@ -31,13 +31,23 @@ If using version 0.6 or above, up to 16 joystick buttons are available. If you w
 If using version 0.7 or above, the output vJoy device is configurable. To output to a device other than 1 it must first be enabled in vJoyConfig.
 
 If using Ninjhax press Start and Select to return to the Homebrew Loader, otherwise you can just exit with the Home button.
+### Linux
+You will need the [3DS_Controller.py](https://github.com/Ordinaryperson2/3DSController/blob/master/Linux/3DS_Controller.py) file.
 
-### Configuration
+This is a python (v2 and v3) script allowing the use of the console as an UInput device.
+
+You will therefore need the package 'python-uinput' for this to work.
+
+Works with all buttons, sliders and joysticks of all 3DS consoles, except for the Home and Power buttons and the 3D slider.
+
+## Configuration
 Find the line `Port: 8889` and change it to your desired port, do this for both the 3DS's `3DSController.ini` and the PC's `3DSController.ini`.
 
 To use custom key bindings, just change the PC's `3DSController.ini` file, it should be straight forward.
+### Linux
+The configuration is in the 3DS_Controller.py file itself. It doesn't use the .ini.
 
-### Troubleshooting
+## Troubleshooting
 - Make sure that you are using the 3DS and PC application from the same release,
 - Make sure your 3DS has internet access (turn on the switch on the side of the 3DS so that an orange light shows) and is on the same network as your PC,
 - Make sure that the `3DSController.ini` is in the root of your 3DS's SD card (not flashcard micro SD),
